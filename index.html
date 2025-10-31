@@ -63,7 +63,17 @@
     .stat{font-weight:800; font-size:clamp(1.6rem, 3vw, 2.2rem)}
 
     .showcase{grid-column: span 7}
-    .showcase-inner{background: center/cover no-repeat url("assets/agartha.jpg"),radial-gradient(500px 300px at 0% 0%, #111a3e 0%, var(--bg) 60%);}
+.showcase-inner
+  {
+  aspect-ratio:16/9;
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  position:relative;
+  background:
+    center/cover no-repeat url("assets/agartha.png"),
+    radial-gradient(500px 300px at 0% 0%, #111a3e 0%, var(--bg) 60%);
+}
     .glow{position:absolute; inset:auto -10% -30% -10%; height:260px; background:radial-gradient(50% 100% at 50% 0%, rgba(125,211,252,.25), transparent 70%), radial-gradient(50% 100% at 50% 0%, rgba(167,139,250,.25), transparent 70%)}
 
     .features{grid-column: span 5; display:grid; gap:1rem}
