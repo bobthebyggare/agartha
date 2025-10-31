@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agartha – Officiell webbplats</title>
+  <meta name="description" content="Agartha – en plats för kunskap, community och upptäckter. Läs mer, se våra projekt och kontakta oss." />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="icon" href="favicon.ico" />
+  <meta property="og:title" content="Agartha – Officiell webbplats" />
+  <meta property="og:description" content="Agartha – en plats för kunskap, community och upptäckter." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:url" content="https://example.com" />
+  <style>
+    :root{
+      --bg: #0b1020;          /* djupt midnatt */
+      --bg-soft:#121936;
+      --card:#0e1530;
+      --text:#e5e7eb;         /* grå-100 */
+      --muted:#9ca3af;        /* grå-400 */
+      --brand:#7dd3fc;        /* cyan-300 */
+      --brand-2:#a78bfa;      /* violet-400 */
+      --accent:#34d399;       /* emerald-400 */
+      --ring: 0 0 0 3px rgba(125,211,252,.35);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text); background: radial-gradient(1000px 500px at 10% 0%, #10183a 0%, var(--bg) 50%), radial-gradient(1200px 600px at 100% 0%, #181c3a 0%, var(--bg) 60%);
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{width:min(1100px, 92%); margin:0 auto}
+    .btn{display:inline-flex; align-items:center; gap:.6rem; padding:.9rem 1.1rem; border-radius:12px; font-weight:600; background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#0b1020; border:0; cursor:pointer; box-shadow:var(--shadow)}
+    .btn.secondary{background:transparent; color:var(--text); border:1px solid #334155}
+    .btn:focus-visible{outline:none; box-shadow:var(--ring)}
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(11,16,32,.6); border-bottom:1px solid rgba(255,255,255,.06)
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:.9rem 0}
+    .brand{display:flex; align-items:center; gap:.75rem}
+    .logo{width:36px; height:36px; border-radius:10px; background:conic-gradient(from 90deg at 50% 50%, var(--brand), var(--brand-2), var(--accent)); box-shadow:0 6px 20px rgba(167,139,250,.4)}
+    .title{font-weight:800; letter-spacing:.3px}
+    .navlinks{display:flex; gap:1rem}
+    .navlinks a{padding:.45rem .7rem; border-radius:10px}
+    .navlinks a:hover{background:rgba(255,255,255,.06)}
+
+    /* HERO */
+    .hero{position:relative; padding:5rem 0 4rem}
+    .hero h1{font-size: clamp(2rem, 4.6vw, 3.5rem); line-height:1.08; margin:0 0 1rem}
+    .hero p{color:var(--muted); font-size:1.15rem; max-width:65ch}
+    .hero-cta{margin-top:1.3rem; display:flex; gap:.8rem; flex-wrap:wrap}
+    .grid{
+      display:grid; gap:1rem; grid-template-columns:repeat(12,1fr); margin-top:2.2rem
+    }
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); padding:1.1rem; border-radius:var(--radius); box-shadow:var(--shadow)}
+    .card h3{margin:.2rem 0 .4rem; font-size:1rem}
+    .stat{font-weight:800; font-size:clamp(1.6rem, 3vw, 2.2rem)}
+
+    .showcase{grid-column: span 7}
+    .showcase-inner{aspect-ratio:16/9; border-radius:var(--radius); overflow:hidden; border:1px solid rgba(255,255,255,.08); position:relative; background:radial-gradient(500px 300px at 0% 0%, #111a3e 0%, #0b1020 60%)}
+    .glow{position:absolute; inset:auto -10% -30% -10%; height:260px; background:radial-gradient(50% 100% at 50% 0%, rgba(125,211,252,.25), transparent 70%), radial-gradient(50% 100% at 50% 0%, rgba(167,139,250,.25), transparent 70%)}
+
+    .features{grid-column: span 5; display:grid; gap:1rem}
+    .feature-item{display:flex; gap:.9rem; align-items:flex-start}
+    .icon{flex:0 0 40px; height:40px; border-radius:10px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); display:grid; place-items:center; color:#0b1020; font-weight:900}
+
+    /* SEKTIONER */
+    section{padding:4rem 0}
+    section h2{font-size: clamp(1.6rem, 3vw, 2.2rem); margin:0 0 .6rem}
+    .muted{color:var(--muted)}
+
+    .cards3{display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+
+    .gallery{display:grid; grid-template-columns:repeat(6,1fr); gap:.6rem}
+    .gallery div{aspect-ratio:1/1; border-radius:14px; background:#111731; border:1px solid rgba(255,255,255,.07)}
+    .gallery div:nth-child(odd){background:linear-gradient(180deg, rgba(125,211,252,.08), rgba(255,255,255,0))}
+
+    /* FOOTER */
+    footer{padding:3rem 0; border-top:1px solid rgba(255,255,255,.08); background:rgba(0,0,0,.2)}
+    .foot{display:grid; gap:1rem; grid-template-columns:1fr auto}
+    .small{font-size:.9rem}
+
+    /* FORM */
+    form{display:grid; gap:.8rem; max-width:560px}
+    input, textarea{width:100%; padding:.9rem 1rem; border-radius:12px; border:1px solid #334155; background:#0b1020; color:var(--text)}
+    input:focus, textarea:focus{outline:none; box-shadow:var(--ring); border-color:transparent}
+
+    /* RESPONSIVE tweaks */
+    @media (max-width: 900px){
+      .showcase{grid-column: span 12}
+      .features{grid-column: span 12}
+      .hero{padding:3.2rem 0 2.4rem}
+    }
+  </style>
+  <script>
+    // Liten scroll-nav och aktiv länkmarkering
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('[data-scrollto]');
+      links.forEach(a => a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = a.getAttribute('href');
+        document.querySelector(id)?.scrollIntoView({behavior:'smooth', block:'start'});
+        history.pushState(null, '', id);
+      }));
+
+      // Year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Agartha",
+    "url": "https://example.com",
+    "logo": "https://example.com/logo.png",
+    "sameAs": []
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">Agartha</div>
+      </div>
+      <nav class="navlinks" aria-label="Primär navigering">
+        <a href="#om" data-scrollto>Om</a>
+        <a href="#projekt" data-scrollto>Projekt</a>
+        <a href="#galleri" data-scrollto>Galleri</a>
+        <a href="#kontakt" data-scrollto>Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="grid">
+          <div class="showcase">
+            <h1>Välkommen till <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent">Agartha</span></h1>
+            <p>Agartha är en plats för kunskap, community och upptäckter. Här samlar vi våra idéer, artiklar och projekt i ett öppet och vackert gränssnitt.</p>
+            <div class="hero-cta">
+              <a class="btn" href="#projekt" data-scrollto>
+                <span>Utforska projekt</span>
+                <span aria-hidden>→</span>
+              </a>
+              <a class="btn secondary" href="#kontakt" data-scrollto>Kontakta oss</a>
+            </div>
+            <div class="grid" style="margin-top:1.5rem">
+              <div class="card" style="grid-column: span 4">
+                <div class="stat">12+</div>
+                <div class="muted">Aktiva initiativ</div>
+              </div>
+              <div class="card" style="grid-column: span 4">
+                <div class="stat">3K</div>
+                <div class="muted">Medlemmar & följare</div>
+              </div>
+              <div class="card" style="grid-column: span 4">
+                <div class="stat">2018</div>
+                <div class="muted">Sedan</div>
+              </div>
+            </div>
+          </div>
+          <div class="features">
+            <div class="showcase-inner card">
+              <!-- Här kan du lägga in en bild/video eller illustration -->
+              <div class="glow" aria-hidden="true"></div>
+            </div>
+            <div class="card feature-item">
+              <div class="icon">↟</div>
+              <div>
+                <h3>Forskning & artiklar</h3>
+                <p class="muted">Sammanställningar, guider och bloggposter om våra fokusområden.</p>
+              </div>
+            </div>
+            <div class="card feature-item">
+              <div class="icon">※</div>
+              <div>
+                <h3>Community</h3>
+                <p class="muted">Event, möten och samarbeten där nya idéer får växa.</p>
+              </div>
+            </div>
+            <div class="card feature-item">
+              <div class="icon">⚙</div>
+              <div>
+                <h3>Projekt & verktyg</h3>
+                <p class="muted">Öppna projekt och små verktyg – från prototyper till färdiga lösningar.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OM -->
+    <section id="om">
+      <div class="container">
+        <h2>Om Agartha</h2>
+        <p class="muted">Skriv en kort pitch här: vad är Agartha, varför finns det och vad vill ni åstadkomma? Lägg gärna till er värdegrund eller ett manifest i punktform.</p>
+        <div class="cards3" style="margin-top:1rem">
+          <div class="card"><h3>Mission</h3><p class="muted">Ex: Demokratisera tillgången till kunskap genom öppna resurser.</p></div>
+          <div class="card"><h3>Vision</h3><p class="muted">Ex: En värld där nyfikenhet och samarbete driver samhällsutveckling.</p></div>
+          <div class="card"><h3>Värden</h3><p class="muted">Transparens • Inkludering • Långsiktighet</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJEKT -->
+    <section id="projekt">
+      <div class="container">
+        <h2>Utvalda projekt</h2>
+        <p class="muted">Lyft fram 3–6 projekt med kort beskrivning och länkar.</p>
+        <div class="cards3" style="margin-top:1rem">
+          <article class="card">
+            <h3>Projekt A</h3>
+            <p class="muted">Kort text om syfte, status och resultat.</p>
+            <p><a href="#" class="btn secondary">Läs mer</a></p>
+          </article>
+          <article class="card">
+            <h3>Projekt B</h3>
+            <p class="muted">Kort text om syfte, status och resultat.</p>
+            <p><a href="#" class="btn secondary">Läs mer</a></p>
+          </article>
+          <article class="card">
+            <h3>Projekt C</h3>
+            <p class="muted">Kort text om syfte, status och resultat.</p>
+            <p><a href="#" class="btn secondary">Läs mer</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERI -->
+    <section id="galleri">
+      <div class="container">
+        <h2>Galleri</h2>
+        <p class="muted">Byt ut rutorna mot riktiga bilder från era event eller projekt.</p>
+        <div class="gallery" aria-label="Bildgalleri">
+          <div></div><div></div><div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div><div></div><div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt">
+      <div class="container">
+        <h2>Kontakta oss</h2>
+        <p class="muted">Använd formuläret eller mejla <a href="mailto:info@agartha.org">info@agartha.org</a>.</p>
+        <form action="https://formspree.io/f/your-id" method="POST">
+          <label>
+            Namn
+            <input name="name" type="text" placeholder="Ditt namn" required />
+          </label>
+          <label>
+            E‑post
+            <input name="email" type="email" placeholder="namn@exempel.se" required />
+          </label>
+          <label>
+            Meddelande
+            <textarea name="message" rows="5" placeholder="Hej Agartha, ..." required></textarea>
+          </label>
+          <button class="btn" type="submit">Skicka</button>
+          <p class="muted small">Tips: Skapa ett gratis formulär-ID på Formspree eller byt ut action till din egen backend.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div class="small muted">© <span id="year"></span> Agartha. Alla rättigheter förbehållna.</div>
+      <div class="small"><a href="#om" data-scrollto>Integritet</a> · <a href="#om" data-scrollto>Villkor</a></div>
+    </div>
+  </footer>
+</body>
+</html>
